@@ -12,7 +12,8 @@ public class Company {
         employees = persistence.findAll();
     }
 
-    public void addProgrammer(String fullName, Integer salary) {
-        persistence.save(new Programmer(fullName, salary));
+    public void addEmployee(Employee e) {
+        persistence.save(e);
     }
+
 }
