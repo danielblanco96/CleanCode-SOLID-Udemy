@@ -11,21 +11,27 @@ public class BookFilePersistence implements BookPersistence {
     public static final String BOOK_DIRECTORY_PATH = "/tmp";
 
     @Override
-    public void save(Book book) throws IOException {
+    public void save(Book book) {
         String bookFilePath =
                 BookFilePersistence.BOOK_DIRECTORY_PATH + "/" + book.getTitle() + "_"
                         + new Date().getTime();
         List<Page> bookPages = book.getPages();
-        BufferedWriter writer = new BufferedWriter(new FileWriter(bookFilePath));
+        BufferedWriter writer;
+        try {
+            writer = new BufferedWriter(new FileWriter(bookFilePath));
 
-        for (Page page : bookPages) {
-            writer.write("---- Page " + page.getNumber() + " ----");
-            writer.newLine();
-            writer.write(page.getContent());
-            writer.newLine();
+            for (Page page : bookPages) {
+                writer.write("---- Page " + page.getNumber() + " ----");
+                writer.newLine();
+                writer.write(page.getContent());
+                writer.newLine();
+            }
+
+            writer.close();
+        } catch (IOException e) {
+            throw new BookPersistenceException();
         }
 
-        writer.close();
     }
 
 }

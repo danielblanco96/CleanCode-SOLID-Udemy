@@ -5,7 +5,7 @@ import java.util.List;
 
 public class ProgrammerMemoryPersistence {
 
-    List<Programmer> programmers;
+    private List<Programmer> programmers;
 
     public ProgrammerMemoryPersistence() {
         programmers = new ArrayList<Programmer>();
