@@ -42,6 +42,11 @@ public class Logger {
         }
     }
 
+    private boolean isAnyLastMonthDataAvailable() {
+        File logFile = new File(EMPLOYEE_LOG_PATH);
+        return logFile.exists() && logFile.length() > 0;
+    }
+
     private Integer getLastMonthMaximumNumberOfEmployees() throws IOException {
         List<String> data = Files.readAllLines(Paths.get("log.txt"), StandardCharsets.UTF_8);
 
@@ -56,9 +61,10 @@ public class Logger {
         return max;
     }
 
-    private boolean isAnyLastMonthDataAvailable() {
-        File logFile = new File(EMPLOYEE_LOG_PATH);
-        return logFile.exists() && logFile.length() > 0;
+    private void createFileIfNotExists(Path path) throws IOException {
+        if (!Files.exists(path)) {
+            Files.createFile(path);
+        }
     }
 
     private void updateDailyLog(Integer numberOfEmployees) throws IOException {
@@ -75,9 +81,4 @@ public class Logger {
         return day != DayOfWeek.SATURDAY && day != DayOfWeek.SUNDAY;
     }
 
-    private void createFileIfNotExists(Path path) throws IOException {
-        if (!Files.exists(path)) {
-            Files.createFile(path);
-        }
-    }
 }
