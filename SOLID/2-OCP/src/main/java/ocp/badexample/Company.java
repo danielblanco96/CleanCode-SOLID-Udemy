@@ -10,7 +10,7 @@ public class Company {
         persistence = new ProgrammerMemoryPersistence();
     }
 
-    public List<Programmer> getEmployees() {
+    public List<Programmer> getProgrammers() {
         return persistence.findAll();
     }
 
