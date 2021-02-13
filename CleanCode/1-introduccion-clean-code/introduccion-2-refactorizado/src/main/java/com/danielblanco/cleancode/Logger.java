@@ -16,9 +16,9 @@ public class Logger {
     private static final String EMPLOYEE_LOG_PATH = "log.txt";
     private static final String LAST_MONTH_LOG_PATH = "lastMonthMax.txt";
 
-    public void logNumberOfEmployees(Integer value) throws IOException {
+    public void logNumberOfEmployees(Integer numberOfEmployees) throws IOException {
         checkMonthlyLog();
-        updateDailyLog(value);
+        updateDailyLog(numberOfEmployees);
     }
 
     private void checkMonthlyLog() throws IOException {
@@ -61,11 +61,11 @@ public class Logger {
         return logFile.exists() && logFile.length() > 0;
     }
 
-    private void updateDailyLog(Integer value) throws IOException {
+    private void updateDailyLog(Integer numberOfEmployees) throws IOException {
         if (isWorkingDay()) {
             createFileIfNotExists(Paths.get(EMPLOYEE_LOG_PATH));
 
-            String newLog = value.toString() + "\n";
+            String newLog = numberOfEmployees.toString() + "\n";
             Files.write(Paths.get("log.txt"), newLog.getBytes(), StandardOpenOption.APPEND);
         }
     }
