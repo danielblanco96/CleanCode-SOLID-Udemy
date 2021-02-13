@@ -35,10 +35,10 @@ public class Logger {
         if (isAnyLastMonthDataAvailable()) {
             Integer maxNumberOfEmployees = getLastMonthMaximumNumberOfEmployees();
             createFileIfNotExists(Paths.get(LAST_MONTH_LOG_PATH));
-            Files.write(Paths.get("lastMonthMax.txt"), maxNumberOfEmployees.toString().getBytes(),
+            Files.write(Paths.get(LAST_MONTH_LOG_PATH), maxNumberOfEmployees.toString().getBytes(),
                     StandardOpenOption.WRITE);
 
-            Files.deleteIfExists(Paths.get("log.txt"));
+            Files.deleteIfExists(Paths.get(EMPLOYEE_LOG_PATH));
         }
     }
 
@@ -48,7 +48,8 @@ public class Logger {
     }
 
     private Integer getLastMonthMaximumNumberOfEmployees() throws IOException {
-        List<String> data = Files.readAllLines(Paths.get("log.txt"), StandardCharsets.UTF_8);
+        List<String> data =
+                Files.readAllLines(Paths.get(EMPLOYEE_LOG_PATH), StandardCharsets.UTF_8);
 
         Integer max = 0;
         for (String s : data) {
@@ -72,7 +73,7 @@ public class Logger {
             createFileIfNotExists(Paths.get(EMPLOYEE_LOG_PATH));
 
             String newLog = numberOfEmployees.toString() + "\n";
-            Files.write(Paths.get("log.txt"), newLog.getBytes(), StandardOpenOption.APPEND);
+            Files.write(Paths.get(EMPLOYEE_LOG_PATH), newLog.getBytes(), StandardOpenOption.APPEND);
         }
     }
 
