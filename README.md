@@ -2,7 +2,7 @@
 
 Bienvenido al repositorio del curso de Udemy **'Principios SOLID y Clean Code. Escribe código de calidad.'** Aquí encontrarás todos los ejemplos prácticos vistos en el curso.
 
-Puedes arquirir el curso en [este enlace](). Contacta conmigo por [LinkedIn](https://www.linkedin.com/in/daniel-blanco-calvi%C3%B1o-7454ab13b/) para obtener un código de descuento!
+Puedes adquirir el curso en [este enlace](). Contacta conmigo por [LinkedIn](https://www.linkedin.com/in/daniel-blanco-calvi%C3%B1o-7454ab13b/) para obtener un código de descuento!
 
 ## _Ejemplos de los principios del Clean Code_
 - Sección 1. [Intoducción al Clean Code.](https://github.com/danielblanco96/CleanCode-SOLID-Udemy/tree/main/CleanCode/1-introduccion-clean-code)
