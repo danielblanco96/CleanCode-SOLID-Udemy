@@ -1,5 +1,6 @@
 package tddexample;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -22,6 +23,12 @@ public class FlightController {
         flights.put(flight.getReference(), flight);
     }
 
+    public void deleteFlight(String reference) {
+        if (flights.remove(reference) == null) {
+            throw new FlightNotFoundException();
+        }
+    }
+
     public Flight findFlightByReference(String flightReference) {
         Flight flight = flights.get(flightReference);
         if (flight == null) {
@@ -42,6 +49,24 @@ public class FlightController {
         }
 
         return filteredFlights;
+    }
+
+    public List<Flight> findFlightsByDepartureTimeRange(LocalDateTime from, LocalDateTime to) {
+        List<Flight> result = new ArrayList<Flight>();
+
+        for (Flight flight : flights.values()) {
+            if (isFlightInsideRangeClosedBounds(flight, from, to)) {
+                result.add(flight);
+            }
+        }
+
+        return result;
+    }
+
+    private boolean isFlightInsideRangeClosedBounds(Flight flight, LocalDateTime from,
+            LocalDateTime to) {
+        return flight.getDepartureTime().isAfter(from.minusMinutes(1))
+                && flight.getDepartureTime().isBefore(to.plusMinutes(1));
     }
 
 }
