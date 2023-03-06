@@ -1,5 +1,3 @@
-# CleanCode-SOLID-Udemy
-
 # Algoritmos, Estructuras de Datos y Entrevistas
 
 Bienvenido al repositorio del curso de Udemy **'Algoritmos, Estructuras de Datos y Entrevistas'** Aquí encontrarás todos los ejemplos prácticos vistos en el curso.
